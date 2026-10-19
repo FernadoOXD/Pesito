@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cat_01",
+    "nombre": "Alimentación",
+    "limitePresupuesto": 4000.0
+  },
+  {
+    "id": "cat_02",
+    "nombre": "Transporte",
+    "limitePresupuesto": 1500.0
+  },
+  {
+    "id": "cat_03",
+    "nombre": "Servicios",
+    "limitePresupuesto": 2000.0
+  },
+  {
+    "id": "cat_04",
+    "nombre": "Hogar",
+    "limitePresupuesto": 2500.0
+  },
+  {
+    "id": "cat_05",
+    "nombre": "Entretenimiento",
+    "limitePresupuesto": 1000.0
+  },
+  {
+    "id": "cat_06",
+    "nombre": "Extras",
+    "limitePresupuesto": 300.0
+  }
+]
