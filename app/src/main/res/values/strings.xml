@@ -1,3 +1,35 @@
 <resources>
-    <string name="app_name">kt_template</string>
+<string name="app_name">kt_template</string>
+<string name="dashboard_title">Dashboard</string>
+<string name="saludo_usuario">Hola, Fernando</string>
+<string name="periodo_activo">Octubre 2026 · Periodo activo</string>
+<string name="dias_restantes">12 días rest.</string>
+<string name="presupuesto_mensual">PRESUPUESTO MENSUAL</string>
+<string name="limite_formato">Límite: $%.2f</string>
+<string name="editar_limite">Editar Límite</string>
+<string name="consumido_porcentaje">%.0f%% consumido</string>
+<string name="total_gastado">Total gastado</string>
+<string name="saldo_disponible">Saldo disponible</string>
+<string name="leyenda_seguro">Seguro (&lt;70%)</string>
+<string name="leyenda_alerta">Alerta (70-90%)</string>
+<string name="leyenda_exceso">Exceso (&gt;90%)</string>
+<string name="ahorro_mes">Ahorro del mes</string>
+<string name="mayor_consumo">Mayor consumo</string>
+<string name="categorias_gasto">Categorías de Gasto</string>
+<string name="movimientos_recientes">Movimientos Recientes</string>
+<string name="todas">Todas</string>
+<string name="btn_editar">Editar</string>
+<string name="btn_eliminar">Eliminar</string>
+<string name="registrar_nuevo_gasto">Registrar Nuevo Gasto</string>
+<string name="seleccionar_categoria">Seleccionar Categoría</string>
+<string name="concepto_gasto">Concepto del gasto</string>
+<string name="monto_gasto">Monto del gasto</string>
+<string name="presupuesto_restante_fmt">Presupuesto mensual restante: $%.2f</string>
+<string name="ajuste_rapido">Ajuste rápido estimado</string>
+<string name="guardar_transaccion">Guardar Transacción</string>
+<string name="editar_limite_titulo">Editar Límite Mensual</string>
+<string name="editar_limite_subtitulo">Ajusta tu tope de gastos para el periodo</string>
+<string name="nuevo_limite_gasto">NUEVO LÍMITE DE GASTO</string>
+<string name="cancelar">Cancelar</string>
+<string name="guardar_limite">Guardar Límite</string>
 </resources>
