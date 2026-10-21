@@ -11,7 +11,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.upchiapas.kt_template.R
 import com.upchiapas.kt_template.data.model.CategoriaGasto
-import org.w3c.dom.Text
 
 @Composable
 fun FiltroCategorias(
@@ -34,7 +33,7 @@ fun FiltroCategorias(
             FilterChip(
                 selected = categoriaSeleccionadaId == cat.id,
                 onClick = { onCategoriaSelected(cat.id) },
-                label = { Text(cat.nombre)}
+                label = { Text(cat.nombre) }
             )
         }
     }
