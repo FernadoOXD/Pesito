@@ -1,4 +1,4 @@
-package com.upchiapas.kt_template.ui.components
+package com.upchiapas.kt_template.pesito.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.upchiapas.kt_template.R
-import com.upchiapas.kt_template.data.model.CategoriaGasto
+import com.upchiapas.kt_template.pesito.data.model.CategoriaGasto
 
 @Composable
 fun FiltroCategorias(

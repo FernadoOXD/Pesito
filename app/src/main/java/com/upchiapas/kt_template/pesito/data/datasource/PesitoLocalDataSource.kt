@@ -1,11 +1,11 @@
-package com.upchiapas.kt_template.data.local
+package com.upchiapas.kt_template.pesito.data.datasource
 
 import android.content.Context
 import com.upchiapas.kt_template.R
-import com.upchiapas.kt_template.data.model.CategoriaGasto
+import com.upchiapas.kt_template.pesito.data.model.CategoriaGasto
 import org.json.JSONArray
 
-class LocalAssetDataSource(private val context: Context) {
+class PesitoLocalDataSource(private val context: Context) {
 
     fun cargarCategoriasSemilla(): List<CategoriaGasto> {
         val categoriasList = mutableListOf<CategoriaGasto>()

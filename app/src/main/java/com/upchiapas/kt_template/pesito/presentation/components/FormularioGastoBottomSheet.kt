@@ -1,4 +1,4 @@
-package com.upchiapas.kt_template.ui.components
+package com.upchiapas.kt_template.pesito.presentation.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -14,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.upchiapas.kt_template.R
-import com.upchiapas.kt_template.data.model.CategoriaGasto
-import com.upchiapas.kt_template.data.model.Gasto
+import com.upchiapas.kt_template.pesito.data.model.CategoriaGasto
+import com.upchiapas.kt_template.pesito.data.model.Gasto
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -143,7 +143,7 @@ fun FormularioGastoBottomSheet(
                         valueRange = 0f..300f
                     )
 
-                    // Atajos: +$10, +$25, +$50, +$100
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween

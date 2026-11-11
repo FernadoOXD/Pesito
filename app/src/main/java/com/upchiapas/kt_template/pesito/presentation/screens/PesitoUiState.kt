@@ -1,8 +1,9 @@
-package com.upchiapas.kt_template.data.model
-import com.upchiapas.kt_template.data.model.CategoriaGasto
-import com.upchiapas.kt_template.data.model.Gasto
+package com.upchiapas.kt_template.pesito.presentation.screens
 
-data class FinanzasUiState(
+import com.upchiapas.kt_template.pesito.data.model.CategoriaGasto
+import com.upchiapas.kt_template.pesito.data.model.Gasto
+
+data class PesitoUiState(
     val isLoading: Boolean = true,
     val limiteMensualGlobal: Double = 2000.0,
     val totalGastado: Double = 0.0,

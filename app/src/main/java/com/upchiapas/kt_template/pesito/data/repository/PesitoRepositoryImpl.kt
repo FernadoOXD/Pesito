@@ -1,64 +1,68 @@
-package com.upchiapas.kt_template.data.repository
+package com.upchiapas.kt_template.pesito.data.repository
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.upchiapas.kt_template.data.local.LocalAssetDataSource
-import com.upchiapas.kt_template.data.model.CategoriaGasto
-import com.upchiapas.kt_template.data.model.Gasto
+import com.upchiapas.kt_template.pesito.data.datasource.PesitoLocalDataSource
+import com.upchiapas.kt_template.pesito.data.model.CategoriaGasto
+import com.upchiapas.kt_template.pesito.data.model.Gasto
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import org.json.JSONArray
 import org.json.JSONObject
 
-class FinanzasRepository ( private val context: Context) {
-    private val assetDataSource = LocalAssetDataSource(context)
-    private val pref: SharedPreferences= context.getSharedPreferences("finanzas_prefs", Context.MODE_PRIVATE)
+class PesitoRepositoryImpl(
+    private val dataSource: PesitoLocalDataSource,
+    context: Context
+) : PesitoRepository {
 
-    private val _gastoFlow = MutableStateFlow<List<Gasto>>(emptyList())
-    val gastoFlow: StateFlow<List<Gasto>> = _gastoFlow.asStateFlow()
+    private val prefs: SharedPreferences =
+        context.getSharedPreferences("pesito_prefs", Context.MODE_PRIVATE)
+
+    private val _gastosFlow = MutableStateFlow<List<Gasto>>(emptyList())
+    override val gastosFlow: StateFlow<List<Gasto>> = _gastosFlow.asStateFlow()
 
     private val _limiteFlow = MutableStateFlow(2000.0)
-    val limiteFlow: StateFlow<Double> = _limiteFlow.asStateFlow()
+    override val limiteFlow: StateFlow<Double> = _limiteFlow.asStateFlow()
 
     init {
         cargarLimitePersistido()
         cargarGastosPersistidos()
     }
 
-    fun obtenerCategoriasSemilla(): List<CategoriaGasto> {
-        return assetDataSource.cargarCategoriasSemilla()
+    override fun obtenerCategoriasSemilla(): List<CategoriaGasto> {
+        return dataSource.cargarCategoriasSemilla()
     }
 
-    fun guardarGasto(nuevoGasto: Gasto) {
-        val listaActual = _gastoFlow.value.toMutableList()
+    override fun guardarGasto(nuevoGasto: Gasto) {
+        val listaActual = _gastosFlow.value.toMutableList()
         val index = listaActual.indexOfFirst { it.id == nuevoGasto.id }
         if (index != -1) {
             listaActual[index] = nuevoGasto
-        }else{
+        } else {
             listaActual.add(0, nuevoGasto)
         }
-        _gastoFlow.value = listaActual
-        persistirGasto(listaActual)
+        _gastosFlow.value = listaActual
+        persistirGastos(listaActual)
     }
 
-    fun eliminarGasto(gastoId: String) {
-        val listaActual = _gastoFlow.value.filterNot { it.id == gastoId }
-        _gastoFlow.value = listaActual
-        persistirGasto(listaActual)
+    override fun eliminarGasto(gastoId: String) {
+        val listaActual = _gastosFlow.value.filterNot { it.id == gastoId }
+        _gastosFlow.value = listaActual
+        persistirGastos(listaActual)
     }
 
-    fun actualizarLimiteMensual(nuevoLimite: Double) {
+    override fun actualizarLimiteMensual(nuevoLimite: Double) {
         _limiteFlow.value = nuevoLimite
-        pref.edit().putFloat("limite_mensual", nuevoLimite.toFloat()).apply()
+        prefs.edit().putFloat("limite_mensual", nuevoLimite.toFloat()).apply()
     }
 
     private fun cargarLimitePersistido() {
-        val limiteGuardado = pref.getFloat("limite_mensual", 2000.0f).toDouble()
+        val limiteGuardado = prefs.getFloat("limite_mensual", 2000.0f).toDouble()
         _limiteFlow.value = limiteGuardado
     }
 
-    private fun persistirGasto(lista: List<Gasto>) {
+    private fun persistirGastos(lista: List<Gasto>) {
         val jsonArray = JSONArray()
         lista.forEach { gasto ->
             val obj = JSONObject().apply {
@@ -71,11 +75,11 @@ class FinanzasRepository ( private val context: Context) {
             }
             jsonArray.put(obj)
         }
-        pref.edit().putString("gasto_json", jsonArray.toString()).apply()
+        prefs.edit().putString("gastos_json", jsonArray.toString()).apply()
     }
 
     private fun cargarGastosPersistidos() {
-        val jsonString = pref.getString("gasto_json", null) ?: return
+        val jsonString = prefs.getString("gastos_json", null) ?: return
         val lista = mutableListOf<Gasto>()
         try {
             val jsonArray = JSONArray(jsonString)
@@ -92,7 +96,7 @@ class FinanzasRepository ( private val context: Context) {
                     )
                 )
             }
-            _gastoFlow.value = lista
+            _gastosFlow.value = lista
         } catch (e: Exception) {
             e.printStackTrace()
         }

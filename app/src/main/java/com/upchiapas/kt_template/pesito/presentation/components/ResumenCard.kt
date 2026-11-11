@@ -1,7 +1,8 @@
-package com.upchiapas.kt_template.ui.components
+package com.upchiapas.kt_template.pesito.presentation.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier

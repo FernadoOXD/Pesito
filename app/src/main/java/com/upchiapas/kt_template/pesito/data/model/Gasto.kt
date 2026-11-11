@@ -1,4 +1,4 @@
-package com.upchiapas.kt_template.data.model
+package com.upchiapas.kt_template.pesito.data.model
 
 import java.util.UUID
 
